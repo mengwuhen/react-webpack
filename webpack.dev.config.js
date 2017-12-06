@@ -10,6 +10,7 @@ const devConfig = {
     entry: {
         app: [
             'react-hot-loader/patch',
+            "babel-polyfill",
             path.join(__dirname, 'src/index.js')
         ]
     },
@@ -19,8 +20,8 @@ const devConfig = {
     },
     module: {
         rules: [{
-            test: /\.css$/,
-            use: ["style-loader", "css-loader"]
+            test: /\.(css|scss)$/,
+            use: ["style-loader", "css-loader", "postcss-loader"]
         }]
     },
     devServer: {

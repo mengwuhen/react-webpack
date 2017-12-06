@@ -2,6 +2,7 @@
 
 const merge = require('webpack-merge');
 const path = require('path');
+const webpack = require('webpack');
 
 const commonConfig = require('./webpack.common.config.js');
 
@@ -28,7 +29,12 @@ const devConfig = {
         contentBase: path.join(__dirname, './dist'),
         historyApiFallback: true,
         host: '0.0.0.0',
-    }
+    },
+    plugins:[
+        new webpack.DefinePlugin({
+               MOCK: true
+        })
+    ]
 };
 
 module.exports = merge({
